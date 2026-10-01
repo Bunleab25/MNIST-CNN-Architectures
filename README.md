@@ -18,11 +18,11 @@ Evaluated on the standardized **10,000-sample holdout test set** after 12-epoch 
 | :--- | :--- | :--- | :--- |
 | **Final Test Accuracy** | 99.46% (54 errors) | **99.71% (29 errors)** | **+0.25% (−46.3% error reduction)** |
 | **Validation Accuracy (Peak)** | 98.88% (67 errors) | **99.70% (18 errors)** | **+0.82% (−73.1% error reduction)** |
-| **Generalization Gap ($|\text{Val} - \text{Test}|$)** | 0.58% | **0.01%** | **−98.3% gap stability** |
+| **Generalization Gap (&#124;Val − Test&#124;)** | 0.58% | **0.01%** | **−98.3% gap stability** |
 | **Total Parameters** | 421,642 | **252,490** | **−40.12% total model footprint** |
 | **Classifier Head Parameters** | 402,826 (95.5%) | **1,290 (0.5%)** | **−99.68% ($312\times$ lighter head)** |
-| **Backbone Feature Capacity** | 18,816 (4.5%) | **251,200 (99.5%)** | **$+13.3\times$ representation capacity** |
-| **Effective Receptive Field** | $16\times 16$ | **$38\times 38$** | **$+137\%$ spatial receptive coverage** |
+| **Backbone Feature Capacity** | 18,816 (4.5%) | **251,200 (99.5%)** | **+13.3× representation capacity** |
+| **Effective Receptive Field** | 16 × 16 | **38 × 38** | **+137% spatial receptive coverage** |
 | **Spatial Invariance** | Coordinate-dependent | **Strictly invariant** | Robust to positional jitter |
 
 ### ⏱️ Hardware & Training Budget
@@ -32,10 +32,11 @@ Evaluated on the standardized **10,000-sample holdout test set** after 12-epoch 
 | **GPU** | NVIDIA GeForce RTX 3050 Laptop GPU (4 GB VRAM) |
 | **CPU** | 12th Gen Intel® Core™ i5-12450H |
 | **RAM** | 16 GB DDR4 |
+| **Environment Manager** | Conda / Miniconda (`ai-ml` environment, Python 3.11) |
+| **Deep Learning Stack** | PyTorch 2.x · CUDA Acceleration · cuDNN |
 | **Training Schedule** | 12 Epochs (~18s / epoch) |
 | **Total Wall-Clock Time** | **~3.5 minutes** (from scratch to convergence) |
 | **Peak GPU Memory Usage** | **< 1.2 GB VRAM** |
-| **Deep Learning Stack** | PyTorch 2.x · CUDA Acceleration · cuDNN |
 
 ---
 
@@ -62,14 +63,14 @@ Input (1, 28, 28)
 ==================================================================================================
 ```
 
-### 1. Dual $3\times3$ Convolutional Stages (Receptive Field Expansion)
-Following VGG architectural principles, each block stacks two consecutive $3\times3$ convolutions ($S=1, P=1$). This matches the effective receptive field of a $5\times5$ filter while reducing parameter count by **28%** ($18C^2$ vs $25C^2$) and injecting an extra non-linear activation. Across three stages ($32\to64\to128$), the effective receptive field expands to **$38\times38$**, fully capturing holistic digit topology.
+### 1. Dual 3×3 Convolutional Stages (Receptive Field Expansion)
+Following VGG architectural principles, each block stacks two consecutive 3×3 convolutions (stride=1, padding=1). This matches the effective receptive field of a 5×5 filter while reducing parameter count by **28%** (18C² vs 25C²) and injecting an extra non-linear activation. Across three stages (32 → 64 → 128), the effective receptive field expands to **38×38**, fully capturing holistic digit topology.
 
 ### 2. Global Average Pooling Classifier Head (Spatial Invariance)
-Conventional topologies flatten spatial activations ($64\times 7\times 7 = 3{,}136$), allocating $>95\%$ of model weights to dense layers and memorizing pixel coordinates. By substituting spatial flattening with **Global Average Pooling (GAP)**, the classifier head parameters are reduced from $402{,}826$ to just **1,290 weights** ($-99.68\%$), enforcing complete spatial translation invariance.
+Conventional topologies flatten spatial activations (64 × 7 × 7 = 3,136), allocating >95% of model weights to dense layers and memorizing pixel coordinates. By substituting spatial flattening with **Global Average Pooling (GAP)**, the classifier head parameters are reduced from 402,826 to just **1,290 weights** (−99.68%), enforcing complete spatial translation invariance.
 
 ### 3. Calibrated Optimization via Label Smoothing & Cosine Annealing
-Dirac one-hot cross-entropy drives winning logits toward $+\infty$, creating brittle decision boundaries on ambiguous digit pairs ($9\leftrightarrow 4, 8\leftrightarrow 9$). Regularizing targets with **Label Smoothing ($\varepsilon=0.05$)** bounds the training objective to an entropy floor. Coupled with **Cosine Annealing LR decay** ($\eta_{\min}=10^{-5}$), the validation-to-test generalization gap stabilizes at a razor-thin **0.01%**.
+Dirac one-hot cross-entropy drives winning logits toward +∞, creating brittle decision boundaries on ambiguous digit pairs (9 ↔ 4, 8 ↔ 9). Regularizing targets with **Label Smoothing (ε = 0.05)** bounds the training objective to an entropy floor. Coupled with **Cosine Annealing LR decay** (η_min = 1e-5), the validation-to-test generalization gap stabilizes at a razor-thin **0.01%**.
 
 ---
 
@@ -127,10 +128,17 @@ MNIST-CNN-Architectures/
 
 ## 🚀 Quickstart & Reproduction
 
-### 1. Environment Setup
+### 1. Environment Setup (Conda)
 ```bash
+# Clone the repository
 git clone https://github.com/Bunleab25/MNIST-CNN-Architectures.git
 cd MNIST-CNN-Architectures
+
+# Create and activate Conda environment
+conda create -n ai-ml python=3.11 -y
+conda activate ai-ml
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
