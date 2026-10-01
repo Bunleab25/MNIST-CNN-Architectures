@@ -1,0 +1,36 @@
+# Byte-compiled / Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Datasets and Large Binary Checkpoints
+data/
+src/data/
+src/reports/
+checkpoints/*.pth
+checkpoints/*.pt
+
+# Temporary LaTeX, drafts, and notes
+latex_doc/
+file.md
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.out
+*.bak
+page*.txt
+test_pages.txt
+all_pages.txt
+
+# OS & IDE Settings
+.vscode/
+.idea/
+.DS_Store
+*.swp
