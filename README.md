@@ -4,9 +4,12 @@
 [![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Accuracy](https://img.shields.io/badge/Holdout_Test_Accuracy-99.71%25-brightgreen)](https://github.com/Bunleab25/MNIST-CNN-Architectures)
 [![Parameters](https://img.shields.io/badge/Total_Parameters-252K_(-40.1%25)-blueviolet)](https://github.com/Bunleab25/MNIST-CNN-Architectures)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Case_Study_Post-0A66C2?logo=linkedin&logoColor=white)](https://lnkd.in/p/g7pYAUDu)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A modular, production-grade deep learning research repository exploring convolutional neural network (CNN) architectures for handwritten digit recognition on MNIST. This project contrasts a **canonical baseline CNN** against an **optimized parameter-efficient architecture (`AdvancedMNISTCNN`)**, demonstrating how surgical architectural modifications reduce parameters by **40.1%** while pushing holdout test accuracy to **99.71%** (only 29 errors out of 10,000 samples).
+
+> 📢 **LinkedIn Case Study & Discussion:** Check out the project write-up and join the discussion on [LinkedIn](https://lnkd.in/p/g7pYAUDu).
 
 ---
 
@@ -189,6 +192,9 @@ python main.py --mode eval
 2. **Global Average Pooling (GAP):** Lin, M., Chen, Q., & Yan, S. (2013). *Network In Network.* [arXiv:1312.4400](https://arxiv.org/abs/1312.4400).
 3. **Label Smoothing Regularization:** Szegedy, C., et al. (2016). *Rethinking the Inception Architecture for Computer Vision.* CVPR 2016. [arXiv:1512.00567](https://arxiv.org/abs/1512.00567).
 4. **Cosine Annealing Schedule:** Loshchilov, I., & Hutter, F. (2016). *SGDR: Stochastic Gradient Descent with Warm Restarts.* [arXiv:1608.03983](https://arxiv.org/abs/1608.03983).
+
+### Community & Discussion
+* **LinkedIn Post:** [Follow the project discussion on LinkedIn](https://lnkd.in/p/g7pYAUDu)
 
 ---
 
