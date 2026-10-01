@@ -15,6 +15,7 @@ src/data/
 src/reports/
 checkpoints/*.pth
 checkpoints/*.pt
+!checkpoints/best_advanced_model.pth
 
 # Temporary LaTeX, drafts, and notes
 latex_doc/
