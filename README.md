@@ -25,6 +25,18 @@ Evaluated on the standardized **10,000-sample holdout test set** after 12-epoch 
 | **Effective Receptive Field** | $16\times 16$ | **$38\times 38$** | **$+137\%$ spatial receptive coverage** |
 | **Spatial Invariance** | Coordinate-dependent | **Strictly invariant** | Robust to positional jitter |
 
+### ⏱️ Hardware & Training Budget
+
+| Component / Metric | Empirical Specification |
+| :--- | :--- |
+| **GPU** | NVIDIA GeForce RTX 3050 Laptop GPU (4 GB VRAM) |
+| **CPU** | 12th Gen Intel® Core™ i5-12450H |
+| **RAM** | 16 GB DDR4 |
+| **Training Schedule** | 12 Epochs (~18s / epoch) |
+| **Total Wall-Clock Time** | **~3.5 minutes** (from scratch to convergence) |
+| **Peak GPU Memory Usage** | **< 1.2 GB VRAM** |
+| **Deep Learning Stack** | PyTorch 2.x · CUDA Acceleration · cuDNN |
+
 ---
 
 ## 🔬 Core Architectural Innovations
@@ -98,7 +110,8 @@ MNIST-CNN-Architectures/
 │   ├── evaluate.py           # Holdout evaluation, confusion matrix & error analysis
 │   └── diagnostics.py        # Underfitting/overfitting diagnostic tools
 ├── checkpoints/
-│   └── advanced_history.json # 12-epoch training and validation loss/acc logs
+│   ├── advanced_history.json # 12-epoch training and validation loss/acc logs
+│   └── best_advanced_model.pth# Pretrained model weights (99.71% test accuracy, 3.5MB)
 ├── main.py                   # CLI entrypoint for baseline workflow
 ├── train_advanced.py         # Standalone training script for AdvancedMNISTCNN
 ├── test_eva.py               # Dataset split validator & generalization gap reporter
