@@ -178,6 +178,20 @@ python main.py --mode eval
 
 ---
 
+## 📚 References & Acknowledgments
+
+### Dataset Reference
+* **MNIST Benchmark:** LeCun, Y., Bottou, L., Bengio, Y., & Haffner, P. (1998). *Gradient-based learning applied to document recognition.* Proceedings of the IEEE, 86(11), 2278–2324.  
+  Official Database: [http://yann.lecun.com/exdb/mnist/](http://yann.lecun.com/exdb/mnist/) | PyTorch Docs: [`torchvision.datasets.MNIST`](https://pytorch.org/vision/stable/generated/torchvision.datasets.MNIST.html)
+
+### Key Architectural Foundations
+1. **Stacked 3×3 Convolutions (VGG):** Simonyan, K., & Zisserman, A. (2014). *Very Deep Convolutional Networks for Large-Scale Image Recognition.* [arXiv:1409.1556](https://arxiv.org/abs/1409.1556).
+2. **Global Average Pooling (GAP):** Lin, M., Chen, Q., & Yan, S. (2013). *Network In Network.* [arXiv:1312.4400](https://arxiv.org/abs/1312.4400).
+3. **Label Smoothing Regularization:** Szegedy, C., et al. (2016). *Rethinking the Inception Architecture for Computer Vision.* CVPR 2016. [arXiv:1512.00567](https://arxiv.org/abs/1512.00567).
+4. **Cosine Annealing Schedule:** Loshchilov, I., & Hutter, F. (2016). *SGDR: Stochastic Gradient Descent with Warm Restarts.* [arXiv:1608.03983](https://arxiv.org/abs/1608.03983).
+
+---
+
 ## 📜 License
 
 This project is open source and available under the [MIT License](LICENSE).
